@@ -9,14 +9,14 @@ import java.util.List;
 
 public class ContactDAOImpl implements ContactDAO {
 
-    EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("JPAlAB");
+  static   EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("JPAlAB");
     @Override
     public void create(Contact contact) {
         EntityManager entityManager=entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(contact);
         entityManager.getTransaction().commit();
-
+        entityManager.close();
     }
 
     @Override
@@ -81,4 +81,5 @@ public class ContactDAOImpl implements ContactDAO {
         }
         return delete;
     }
+
 }

@@ -12,12 +12,15 @@ public class ContactJpaMain {
    static ContactDAO contactDAO=new  ContactDAOImpl();
    static Scanner scanner=new Scanner(System.in);
     public static void main(String[] args) {
+        boolean loop=true;
+        while(loop){
         System.out.println("press 1 :- for creating contact ");
         System.out.println("press 2 :- for getting  all contacts ");
         System.out.println("press 3 :- for getting  contact by first name ");
         System.out.println("press 4 :- for getting contact by id");
         System.out.println("press 5 :- for updating contacts phone number ");
         System.out.println("press 6 :- for removing  contact by id");
+        System.out.println("press 7 :to exit");
         int choice=scanner.nextInt();
         scanner.nextLine();
         switch (choice) {
@@ -39,6 +42,10 @@ public class ContactJpaMain {
             case 6:
                 deleteById();
                 break;
+            case 7:
+                loop=false;
+                break;
+        }
         }
 
     }
@@ -48,16 +55,12 @@ public class ContactJpaMain {
         id=scanner.nextLine();
         System.out.print("enter username :");
         username=scanner.nextLine();
-        System.out.println();
         System.out.print("enter firstname :");
         firstName=scanner.nextLine();
-        System.out.println();
         System.out.print("enter lastName :");
         lastName=scanner.nextLine();
-        System.out.println();
         System.out.print("enter phone : ");
         phone=scanner.nextLine();
-        System.out.println();
         Contact contact=new Contact(id,username,firstName,lastName,phone);
         contactDAO.create(contact);
     }
@@ -65,8 +68,8 @@ public class ContactJpaMain {
     // tell us if the person is pension or not
     public static void getAllContacts() {
         List<Contact> contacts = contactDAO.getAll();
-      // for (Contact c : contacts)
-        //System.out.println(c);
+       for (Contact c : contacts)
+        System.out.println(c);
 
         for (Contact contact :contacts){
             int year = Calendar.getInstance().get(Calendar.YEAR);

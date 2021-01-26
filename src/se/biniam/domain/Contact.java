@@ -9,15 +9,15 @@ import javax.persistence.Table;
 @Table(name = "Contacts")
 public class Contact {
     @Id
-    String id;
+    private String id;
     @Column
-    String userName;
+    private String userName;
     @Column
-    String firstName;
+    private String firstName;
     @Column
-    String lastName;
+    private String lastName;
     @Column
-    String phone;
+    private String phone;
 
     public Contact() {
     }
